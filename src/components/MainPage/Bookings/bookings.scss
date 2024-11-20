@@ -1,0 +1,55 @@
+@use '/src/abstracts/abstracts' as *;
+
+.bookings-container {
+  display: flex;
+  flex-direction: column;
+  padding: 5rem;
+  gap: 5rem;
+  &__table-container {
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      height: 1rem;
+    }
+  }
+  &__title {
+    @include container-titles($logo-color-orange);
+    @include respond(min-phone) {
+      text-align: center;
+    }
+  }
+  &__delete-icon {
+    width: 2rem;
+    transition: 0.3s ease;
+    cursor: pointer;
+    &:hover {
+      fill: $color-error-red;
+    }
+  }
+
+  &__table {
+    width: 80%;
+    table-layout: fixed;
+    font-family: $main-font-family;
+    color: $color-black-dark;
+    border-collapse: collapse;
+    margin: 0 auto;
+    @include respond(tab-port) {
+      width: 80rem;
+    }
+    th,
+    td {
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+      word-break: break-all;
+      font-size: 1.2rem;
+    }
+  }
+  th:nth-child(1),
+  th:nth-child(5) {
+    width: 10%;
+  }
+  th:nth-child(2) {
+    width: 45%;
+  }
+}

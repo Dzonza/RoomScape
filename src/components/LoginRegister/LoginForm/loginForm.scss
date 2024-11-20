@@ -1,0 +1,18 @@
+@use '../../../abstracts/abstracts' as *;
+
+.loginRegister-section {
+  &__title {
+    @include loginRegister-title($font-size-title, $margin-bottom-small);
+  }
+  &__login-container {
+    display: flex;
+    flex-direction: column;
+
+    @include respond(phone) {
+      margin: 3rem 0;
+    }
+  }
+  &__login {
+    @include loginRegister-container;
+  }
+}

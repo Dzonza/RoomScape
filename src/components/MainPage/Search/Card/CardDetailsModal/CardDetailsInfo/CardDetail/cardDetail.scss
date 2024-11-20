@@ -1,0 +1,30 @@
+@use '/src/abstracts/abstracts' as *;
+
+.card-modal-details {
+  &__text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    @include respond(phone) {
+      align-items: center;
+    }
+  }
+  &__text-title {
+    font-family: $main-font-family;
+    @include respond(phone) {
+      text-align: center;
+    }
+  }
+  &__text {
+    font-family: $main-font-family;
+    font-weight: 600;
+  }
+}
+
+.description-container {
+  text-align: center;
+
+  &__text {
+    font-weight: 500;
+  }
+}

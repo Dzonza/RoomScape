@@ -1,0 +1,27 @@
+@use '/src/abstracts/abstracts' as *;
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  width: 100%;
+  padding: 5rem;
+
+  &__title {
+    @include container-titles($logo-color-orange);
+
+    @include respond(min-phone) {
+      text-align: center;
+    }
+  }
+  &__all-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7rem;
+    width: 100%;
+    @include respond(phone) {
+      gap: 5rem;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+@use '/src/abstracts/abstracts' as *;
+
+.about-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2rem;
+  width: 25rem;
+  gap: 3rem;
+  border: 2px solid rgba($logo-color-orange, 0.8);
+  background-color: rgba($logo-color-orange, 0.9);
+  border-radius: $border-radius-small;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: translateX(-8rem);
+  opacity: 0;
+  &:hover {
+    background-color: $color-red-light;
+    scale: 1.03;
+  }
+  &__img {
+    width: 8rem;
+    height: 8rem;
+  }
+  &__text {
+    font-family: $main-font-family;
+    font-size: 1.2rem;
+    text-align: center;
+    color: $bg-color-white;
+  }
+}
+
+.about-first-card {
+  @include about-card-animation(0.2s);
+}
+.about-second-card {
+  @include about-card-animation(0.3s);
+}
+.about-third-card {
+  @include about-card-animation(0.4s);
+}
+.about-fourth-card {
+  @include about-card-animation(0.5s);
+}

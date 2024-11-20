@@ -1,0 +1,23 @@
+@use '/src/abstracts/abstracts' as *;
+
+.card-container {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  transform: translateY(5rem);
+  opacity: 0;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.card-in-view {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  opacity: 1;
+}

@@ -1,0 +1,27 @@
+@use '/src/abstracts/abstracts' as *;
+
+.results-container {
+  position: absolute;
+  padding: 0 1rem;
+  width: 100%;
+  height: 150%;
+  border-radius: $border-radius-small;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  box-shadow: $box-shadow-main;
+
+  &__title {
+    font-size: 1.4rem;
+    font-family: 'Montserrat', sans-serif;
+    color: rgba($color-black-dark, 0.8);
+    padding: 1.5rem;
+    cursor: pointer;
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba($color-black-dark, 0.1);
+    }
+  }
+}

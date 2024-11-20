@@ -1,0 +1,27 @@
+@use '/src/abstracts/abstracts' as *;
+
+header {
+  .nav-container {
+    width: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+    gap: 3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    -webkit-backdrop-filter: invert(80%) brightness(70%);
+    backdrop-filter: invert(80%) brightness(70%);
+    -webkit-animation: nav 0.7s ease 0.9s forwards;
+    animation: nav 0.7s ease 0.9s forwards;
+    border-radius: 0 0.7rem 0 0;
+    transition: 0.5s ease;
+    @include respond(tab-land) {
+      border-radius: 0.7rem 0.7rem 0 0;
+    }
+    @include respond(phone) {
+      border-radius: 0;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@use '../../../abstracts/abstracts' as *;
+.login-register-inputs {
+  padding: 1rem;
+  width: 100%;
+  margin-bottom: $margin-bottom-small;
+  background-color: $color-white;
+  border: none;
+  border-bottom: 1px solid $color-black-dark;
+  outline: none;
+  text-indent: 3rem;
+}
+
+.UserNameImage {
+  @include formInputsImages(
+    'https://img.icons8.com/?size=15&id=82751&format=png&color=000000'
+  );
+}
+.PasswordImage {
+  @include formInputsImages(
+    'https://img.icons8.com/?size=15&id=107272&format=png&color=000000'
+  );
+}
+
+.nameImage {
+  @include formInputsImages(
+    'https://img.icons8.com/?size=20&id=JJe3zhETQFbK&format=png&color=000000'
+  );
+}

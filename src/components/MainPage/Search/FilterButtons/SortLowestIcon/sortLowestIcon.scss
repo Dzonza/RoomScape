@@ -1,0 +1,7 @@
+@use '/src/abstracts/abstracts' as *;
+
+.filter-buttons {
+  &__price-lowest {
+    @include filter-search-icons(2.5rem, $color-error-red);
+  }
+}

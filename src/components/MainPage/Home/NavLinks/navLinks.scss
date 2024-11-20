@@ -1,0 +1,68 @@
+@use '/src/abstracts/abstracts' as *;
+
+.nav-container {
+  &__link {
+    text-decoration: none;
+    color: $bg-color-white;
+    position: relative;
+    transition: opacity 0.4s ease;
+    cursor: pointer;
+  }
+
+  &__dot {
+    position: absolute;
+    margin-top: 0.5rem;
+    left: 47%;
+    width: 0.6rem;
+    height: 0.6rem;
+    transform: scale(0.8);
+    border-radius: 50%;
+    background-color: $bg-color-white;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.burger-navigation {
+  &__link {
+    color: $bg-color-white;
+    font-family: $main-font-family;
+    font-size: 2.5rem;
+    padding: 1rem 6rem;
+    text-decoration: none;
+    cursor: pointer;
+    background-image: linear-gradient(
+      120deg,
+      transparent 0%,
+      transparent 50%,
+      $bg-color-white 50%
+    );
+    background-size: 220%;
+    transition: background-position 0.4s, color 0.4s, transform 0.4s,
+      opacity 0.4s ease 0.4s;
+    opacity: 0;
+    visibility: hidden;
+    &:hover {
+      background-position: 100%;
+      color: $logo-color-orange;
+      transform: translateX(1rem);
+    }
+  }
+}
+
+.link1:hover .dot {
+  @include nav-dots;
+}
+.link2:hover .dot {
+  @include nav-dots;
+}
+.link3:hover .dot {
+  @include nav-dots;
+}
+.link4:hover .dot {
+  @include nav-dots;
+}
+.link5:hover .dot {
+  @include nav-dots;
+}

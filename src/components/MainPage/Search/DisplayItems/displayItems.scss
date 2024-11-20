@@ -1,0 +1,9 @@
+@use '/src/abstracts/abstracts' as *;
+
+.all-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 3rem;
+}

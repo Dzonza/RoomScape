@@ -1,0 +1,23 @@
+@use '/src/abstracts/abstracts' as *;
+
+.location-container {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+  @include respond(tab-port) {
+    width: 70%;
+    height: 45rem;
+  }
+  @include respond(phone) {
+    width: 100%;
+  }
+  &__map {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: $border-radius-small;
+    box-shadow: $box-shadow-main;
+  }
+}

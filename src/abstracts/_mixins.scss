@@ -1,0 +1,154 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == min-phone {
+    // 380px
+    @media only screen and (max-width: 23.75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone {
+    // 600px
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == nav-btn {
+    //800px
+    @media only screen and (max-width: 50em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    //900px
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    //1250px
+    @media only screen and (max-width: 78em) {
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    //1800px
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
+
+@mixin formInputsImages($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: center left 5px;
+}
+
+@mixin overlay-button($color, $color-white) {
+  background-color: transparent;
+  transition: 0.4s ease;
+  &:hover {
+    background-color: $color-white;
+    color: $color;
+  }
+}
+
+@mixin loginRegister-buttons($color) {
+  background-color: $color;
+  border: none;
+  transition: 0.4s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+}
+
+@mixin loginRegister-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+@mixin loginRegister-title($font-size, $margin-bottom) {
+  text-align: center;
+  font-size: $font-size;
+  margin-bottom: $margin-bottom;
+  font-weight: 800;
+}
+
+@mixin notification-message($color) {
+  color: $color;
+  opacity: 1;
+  visibility: visible;
+}
+
+@mixin nav-dots {
+  opacity: 1;
+  animation: link-dots 2s linear infinite;
+  visibility: visible;
+}
+@mixin absolute-position-template {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin filter-search-icons($icon-size, $color) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  &-icon {
+    width: $icon-size;
+    cursor: pointer;
+    transition: fill 0.3s ease;
+    &:hover {
+      fill: $color;
+    }
+  }
+}
+
+@mixin pagination-hover($font-color, $bg-color) {
+  color: $font-color;
+  background-color: $bg-color;
+}
+
+@mixin pagination-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+
+@mixin container-titles($color) {
+  font-size: 2rem;
+  font-weight: 800;
+  color: $color;
+}
+
+@mixin bg-video-content {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+@mixin about-card-animation($delay-value) {
+  transition: transform 0.3s ease $delay-value, opacity 0.3s ease $delay-value,
+    background-color 0.3s ease, scale 0.3s ease;
+  transform: translateX(0);
+  opacity: 1;
+}

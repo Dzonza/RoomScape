@@ -1,0 +1,12 @@
+@use '/src/abstracts/abstracts' as *;
+
+.booking-section-calendar {
+  display: flex;
+  gap: 15rem;
+  @include respond(phone) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+  }
+}

@@ -1,0 +1,25 @@
+@use '/src/abstracts/abstracts' as *;
+.card-modal-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: rgba($color-black-dark, 0.9);
+  gap: 5rem;
+  width: 50%;
+  @include respond(tab-port) {
+    width: 70%;
+  }
+  @include respond(phone) {
+    width: 100%;
+  }
+  h3 {
+    text-align: center;
+  }
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+}

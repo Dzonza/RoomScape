@@ -1,0 +1,33 @@
+@use '/src/abstracts/abstracts' as *;
+
+.bg-video-family {
+  @include absolute-position-template;
+  z-index: -1;
+  overflow: hidden;
+  -webkit-clip-path: polygon(35% 0, 100% 0, 100% 100%, 25% 100%);
+  clip-path: polygon(35% 0, 100% 0, 100% 100%, 25% 100%);
+  border-radius: 0 0.7rem 0.7rem 0;
+
+  @include respond(tab-land) {
+    -webkit-clip-path: none;
+    clip-path: none;
+    border-radius: 0.7rem;
+  }
+  @include respond(phone) {
+    border-radius: 0;
+  }
+
+  &__content {
+    @include bg-video-content;
+  }
+}
+.loginRegister-bg-video {
+  @include absolute-position-template;
+  z-index: -1;
+  opacity: 0.15;
+  overflow: hidden;
+
+  &__content {
+    @include bg-video-content;
+  }
+}

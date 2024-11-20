@@ -1,0 +1,93 @@
+@use '../../../abstracts/abstracts' as *;
+
+.loginRegister-section {
+  &__form-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    transition: all 0.4s ease-out;
+    color: $color-white;
+    z-index: 100;
+    @include respond(phone) {
+      width: 100%;
+      height: 50%;
+    }
+    @include respond(min-phone) {
+      padding: 3rem;
+    }
+  }
+
+  &__overlay-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  &__overlay-title {
+    font-size: $font-size-title;
+    margin-bottom: $margin-bottom-small;
+    text-align: center;
+  }
+  &__overlay-text {
+    font-size: 1.4rem;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: $margin-bottom-small;
+  }
+}
+
+.formRegistrationColor {
+  background: hsla(217, 100%, 50%, 1);
+  background: linear-gradient(
+    90deg,
+    hsla(217, 100%, 50%, 1) 0%,
+    hsla(186, 100%, 69%, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(217, 100%, 50%, 1) 0%,
+    hsla(186, 100%, 69%, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#0061FF", endColorstr="#60EFFF", GradientType=1 );
+}
+
+.formLoginColor {
+  background: hsla(145, 84%, 73%, 1);
+  background: linear-gradient(
+    90deg,
+    hsla(145, 84%, 73%, 1) 0%,
+    hsla(150, 61%, 48%, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(145, 84%, 73%, 1) 0%,
+    hsla(150, 61%, 48%, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#82F4B1", endColorstr="#30C67C", GradientType=1 );
+}
+
+.move-right {
+  transform: translateX(100%);
+  border-radius: 0 0.7rem 0.7rem 0;
+}
+
+.move-left {
+  transform: translateX(0);
+  border-radius: 0.7rem 0 0 0.7rem;
+}
+
+.move-down {
+  transform: translateY(100%);
+  border-radius: 0 0 0.7rem 0.7rem;
+}
+
+.move-up {
+  transform: translateY(0);
+  border-radius: 0.7rem 0.7rem 0 0;
+}

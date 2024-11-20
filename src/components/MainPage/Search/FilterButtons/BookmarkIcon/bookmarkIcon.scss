@@ -1,0 +1,7 @@
+@use '/src/abstracts/abstracts' as *;
+
+.filter-buttons {
+  &__bookmarks {
+    @include filter-search-icons(2rem, $color-blue);
+  }
+}

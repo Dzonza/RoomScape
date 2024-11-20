@@ -1,0 +1,17 @@
+@use '/src/abstracts/abstracts' as *;
+
+.search-spinner {
+  position: absolute;
+  width: 8rem;
+  top: -8rem;
+  left: 44%;
+}
+
+.card-details-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.map-loader {
+  width: 20rem;
+}

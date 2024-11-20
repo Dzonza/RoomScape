@@ -1,0 +1,22 @@
+@use '/src/abstracts/abstracts' as *;
+
+.search-bar {
+  width: 50%;
+  position: relative;
+  @include respond(tab-port) {
+    width: 70%;
+  }
+  @include respond(phone) {
+    width: 100%;
+  }
+  &__input {
+    width: 100%;
+    padding: 3rem;
+    border-radius: 5rem;
+    border: 1px solid $color-white;
+    outline: none;
+    font-size: 1.7rem;
+    box-shadow: $box-shadow-main;
+    margin-bottom: 2rem;
+  }
+}

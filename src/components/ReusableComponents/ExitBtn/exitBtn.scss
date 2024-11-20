@@ -1,0 +1,50 @@
+@use '/src/abstracts/abstracts' as *;
+.loginRegister-exit-btn {
+  position: absolute;
+  right: -5rem;
+  top: -5rem;
+  @include respond(phone) {
+    top: -3rem;
+    right: -4rem;
+  }
+
+  &__image {
+    width: 3rem;
+    height: 3rem;
+    fill: $color-error-red;
+    cursor: pointer;
+    transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    &:hover {
+      transform: scale(1.6);
+    }
+    @include respond(phone) {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+}
+
+.modal-exit-btn {
+  position: fixed;
+  right: 4rem;
+  top: 3.5rem;
+  z-index: 500;
+  @include respond(min-phone) {
+    right: 2.5rem;
+  }
+  &__image {
+    width: 3rem;
+    height: 3rem;
+    fill: $color-error-red;
+    cursor: pointer;
+    transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+    &:hover {
+      transform: scale(1.6);
+    }
+    @include respond(phone) {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+}

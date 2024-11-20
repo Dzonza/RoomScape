@@ -1,0 +1,35 @@
+@use '/src/abstracts/abstracts' as *;
+.search-error-message {
+  position: absolute;
+  width: 100%;
+  bottom: -2rem;
+  color: $color-error-red;
+  text-align: center;
+  font-size: $error-font-size-large;
+}
+.display-error {
+  margin-top: $margin-top-small;
+  font-size: $font-size-ingo-message;
+  text-align: center;
+}
+
+.error-booking {
+  position: absolute;
+  top: -4rem;
+  width: 100%;
+  color: $color-error-red;
+  font-size: $error-font-size-large;
+}
+
+.error-booking-display-message {
+  text-align: center;
+  padding: 1rem;
+  color: $color-black-dark;
+  font-size: $error-font-size-large;
+}
+.loginRegister-error-message {
+  color: $color-error-red;
+  font-size: $error-font-size;
+  margin-bottom: $error-margin-bottom;
+  text-align: center;
+}

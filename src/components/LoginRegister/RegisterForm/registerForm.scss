@@ -1,0 +1,15 @@
+@use '../../../abstracts/abstracts' as *;
+
+.loginRegister-section {
+  &__title {
+    @include loginRegister-title($font-size-title, $margin-bottom-small);
+  }
+  &__register {
+    @include loginRegister-container;
+    &-inputs {
+      @include respond(phone) {
+        margin: 1rem 0 3rem;
+      }
+    }
+  }
+}

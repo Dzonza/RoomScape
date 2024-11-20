@@ -1,0 +1,23 @@
+@use '/src/abstracts/abstracts' as *;
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  &__label {
+    font-family: $main-font-family;
+    font-size: 1.8rem;
+  }
+  &__select-container {
+    display: flex;
+    gap: 1.5rem;
+  }
+  &__select {
+    border: none;
+    padding: 1rem;
+    font-size: 1.5rem;
+    outline: none;
+    background-color: rgba($bg-color-white, 0);
+    cursor: pointer;
+  }
+}

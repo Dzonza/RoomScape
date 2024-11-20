@@ -1,0 +1,38 @@
+@use '/src/abstracts/abstracts' as *;
+button {
+  align-self: center;
+  width: 12rem;
+  padding: 1rem 0;
+  border-radius: $border-radius-big;
+  cursor: pointer;
+  color: $color-white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  border: 2px solid $color-white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.loginBtn {
+  @include loginRegister-buttons($color-green);
+}
+.registerBtn {
+  @include loginRegister-buttons($color-blue);
+}
+
+.overlay-btn-sign-in {
+  @include overlay-button($color-green, $color-white);
+}
+.overlay-btn-sign-up {
+  @include overlay-button($color-blue, $color-white);
+}
+
+.booking-btn-container {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  &__btn {
+    @include loginRegister-buttons($color-green);
+    padding: 1.5rem 4rem;
+    width: auto;
+  }
+}

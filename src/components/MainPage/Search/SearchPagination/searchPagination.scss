@@ -1,0 +1,43 @@
+@use '/src/abstracts/abstracts' as *;
+
+.pagination-container {
+  margin-top: $margin-top-small;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: $error-font-size-large;
+  font-family: $main-font-family;
+  font-weight: 500;
+
+  &__page {
+    @include pagination-buttons;
+    color: $color-black-dark;
+    cursor: pointer;
+  }
+  &__arrows {
+    @include pagination-buttons;
+    font-size: $font-size-medium;
+    cursor: pointer;
+    &-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    &:hover {
+      @include pagination-hover($color-white, rgba($color-black-dark, 0.9));
+    }
+    &:hover &-icon {
+      fill: $color-white;
+    }
+  }
+}
+
+.current-page {
+  @include pagination-hover($color-white, rgba($color-black-dark, 0.9));
+}
+.hovered-page {
+  @include pagination-hover($color-white, rgba($color-black-light, 0.4));
+}
+
+.hidden {
+  visibility: hidden;
+}

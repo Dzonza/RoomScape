@@ -1,0 +1,20 @@
+@use '/src/abstracts/abstracts' as *;
+
+#search {
+  padding: 5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.search-container {
+  &__title {
+    @include container-titles($logo-color-orange);
+    align-self: flex-start;
+    @include respond(min-phone) {
+      align-self: center;
+      margin-bottom: 4rem;
+    }
+  }
+}

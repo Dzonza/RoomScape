@@ -1,0 +1,11 @@
+@use '../../abstracts/abstracts' as *;
+
+.main-page {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  @include respond(phone) {
+    padding: 0;
+  }
+}

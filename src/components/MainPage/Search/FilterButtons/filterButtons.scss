@@ -1,0 +1,15 @@
+@use '/src/abstracts/abstracts' as *;
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+
+  &__title {
+    font-size: 1.5rem;
+    color: rgba($color-black-dark, 0.8);
+    @include respond(min-phone) {
+      text-align: center;
+    }
+  }
+}

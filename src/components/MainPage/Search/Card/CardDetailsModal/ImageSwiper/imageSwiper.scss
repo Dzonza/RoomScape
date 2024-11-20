@@ -1,0 +1,47 @@
+@use '/src/abstracts/abstracts' as *;
+
+.image-modal-container {
+  width: 100%;
+}
+.swiper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &-slide {
+    width: 40rem !important;
+    height: 30rem !important;
+    @include respond(phone) {
+      width: 30rem !important;
+      height: 20rem !important;
+    }
+  }
+  &-img {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: $border-radius-small;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transition: box-shadow 0.3s ease;
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+        rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+  }
+  &-pagination {
+    position: relative !important;
+    margin-top: 5rem;
+    &-bullet {
+      width: 1.1rem !important;
+      height: 1.1rem !important;
+      background-color: rgba($color-black-dark, 0.6) !important;
+      border-radius: 50% !important;
+      transition: all 0.4s ease-in-out !important;
+      &-active {
+        width: 3.2rem !important;
+        background-color: $color-red-light !important;
+        border-radius: 1.4rem !important;
+      }
+    }
+  }
+}
