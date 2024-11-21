@@ -12,6 +12,9 @@
 
 .card-detail-logo {
   width: 35rem;
+  @include respond(min-phone) {
+    width: 30rem;
+  }
 }
 
 .footer-logo {

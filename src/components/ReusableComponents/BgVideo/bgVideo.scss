@@ -12,9 +12,13 @@
     -webkit-clip-path: none;
     clip-path: none;
     border-radius: 0.7rem;
+    width: 101%;
+    height: 101%;
   }
   @include respond(phone) {
     border-radius: 0;
+    width: 100%;
+    height: 100%;
   }
 
   &__content {

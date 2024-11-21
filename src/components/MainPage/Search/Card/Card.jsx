@@ -14,7 +14,7 @@ const Card = ({ resultData }) => {
   const dispatch = useDispatch();
   const [isClicked, setIsClicked] = useState(false);
   const { ref, inView } = useInView({
-    threshold: 0.2,
+    threshold: 0,
   });
 
   useEffect(() => {

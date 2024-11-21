@@ -10,6 +10,7 @@ const BgVideo = ({ video, videoStyle }) => {
           autoPlay
           muted
           loop
+          preload="auto"
         >
           <source src={video} type="video/mp4" />
           Your browser is not supported!
