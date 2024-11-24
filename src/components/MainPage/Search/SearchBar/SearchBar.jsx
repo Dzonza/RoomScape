@@ -1,8 +1,7 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import OfferedResults from './OfferedResults/OfferedResults';
 import search from '/src/assets/searchLoader.svg';
 import Spinner from '/src/components/ReusableComponents/Spinner/Spinner';
-import useFormInput from '../../../customHooks/useFormInput';
 import './searchBar.scss';
 import ErrorMessage from '../../../ReusableComponents/ErrorMessage/ErrorMessage';
 import SearchIcon from './SearchIcon/SearchIcon';
@@ -17,13 +16,13 @@ const SearchBar = ({
   const [searchResults, setSearchResults] = useState([]);
   const [searchError, setSearchError] = useState('');
   const [searchSpinner, setSearchSpinner] = useState(false);
-  const [isSelectedSearchResult, setIsSelectedSearchResult] = useState(false);
-  const inputData = useFormInput(searchInput);
+  const debounceTimer = useRef();
   const handleSearchButton = useCallback(() => {
     if (!searchInput) return;
     setSearchError(false);
     setResultsFromSearch([]);
     setSpinner(true);
+
     async function getApartments() {
       try {
         const response = await fetch(
@@ -62,6 +61,11 @@ const SearchBar = ({
       if (cityID) {
         setCityID('');
       }
+      if (!input) {
+        setSearchResults([]);
+        setSearchError('');
+        return;
+      }
       setSearchSpinner(true);
       async function fetchCities() {
         try {
@@ -99,21 +103,19 @@ const SearchBar = ({
     [cityID]
   );
 
-  const handleSearchInput = useCallback((e) => {
-    setIsSelectedSearchResult(false);
-    setSearchInput(e.target.value);
-  }, []);
+  const handleSearchInput = useCallback(
+    (e) => {
+      setSearchInput(e.target.value);
 
-  useEffect(() => {
-    if (!inputData) {
-      setSearchResults([]);
-      setSearchError('');
-      return;
-    }
-    if (inputData && !isSelectedSearchResult) {
-      getOfferedCities(inputData);
-    }
-  }, [getOfferedCities, inputData, isSelectedSearchResult]);
+      if (debounceTimer.current) {
+        clearTimeout(debounceTimer.current);
+      }
+      debounceTimer.current = setTimeout(() => {
+        getOfferedCities(e.target.value);
+      }, 500);
+    },
+    [getOfferedCities]
+  );
 
   return (
     <>
@@ -146,7 +148,6 @@ const SearchBar = ({
             setResults={setSearchResults}
             setSearch={setSearchInput}
             setID={setCityID}
-            setIsSelectedSearchResult={setIsSelectedSearchResult}
           />
         ) : (
           ''

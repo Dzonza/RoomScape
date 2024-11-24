@@ -1,21 +1,14 @@
 import { useCallback } from 'react';
 import './offeredResults.scss';
 
-const OfferedResults = ({
-  results,
-  setSearch,
-  setID,
-  setResults,
-  setIsSelectedSearchResult,
-}) => {
+const OfferedResults = ({ results, setSearch, setID, setResults }) => {
   const handleResultsClick = useCallback(
     (id, location) => {
-      setIsSelectedSearchResult(true);
       setID(id);
       setSearch(location);
       setResults([]);
     },
-    [setID, setSearch, setResults, setIsSelectedSearchResult]
+    [setID, setSearch, setResults]
   );
 
   return (
