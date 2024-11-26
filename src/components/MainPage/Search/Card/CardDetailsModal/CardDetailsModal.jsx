@@ -9,11 +9,13 @@ import CardDetailsModalBg from './CardDetailsModalBg/CardDetailsModalBg';
 import CardDetailsBooking from './CardDetailsbooking/CardDetailsBooking';
 import { useDispatch } from 'react-redux';
 import { close } from '/src/States/bookingModalSlice';
+import { createPortal } from 'react-dom';
 
 const CardDetailsModal = ({ resultData }) => {
   const [apartmentInfo, setAparmtentInfo] = useState([]);
   const [loader, setLoader] = useState(true);
   const dispatch = useDispatch();
+
   useEffect(() => {
     async function getInfoData() {
       try {
@@ -41,7 +43,7 @@ const CardDetailsModal = ({ resultData }) => {
   const handleModalExitBtn = useCallback(() => {
     dispatch(close());
   }, [dispatch]);
-  return (
+  return createPortal(
     <section className="card-detail-container">
       <CardDetailsModalBg />
       <ExitBtn onClick={handleModalExitBtn} exitBtnStyle="modal-exit-btn" />
@@ -56,7 +58,8 @@ const CardDetailsModal = ({ resultData }) => {
         <CardDetailLocation resultData={apartmentInfo} loader={loader} />
       </section>
       <CardDetailsBooking apartmentInfo={apartmentInfo} />
-    </section>
+    </section>,
+    document.querySelector('body')
   );
 };
 
