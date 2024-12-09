@@ -17,15 +17,19 @@
       text-align: center;
     }
   }
-  &__delete-icon {
-    width: 2rem;
-    transition: 0.3s ease;
-    cursor: pointer;
-    &:hover {
-      fill: $color-error-red;
-    }
-  }
 
+  &__delete-icon {
+    @include bookings-actions($color-error-red, 1rem);
+  }
+  &__cancel-icon {
+    @include bookings-actions($color-error-red, 0);
+  }
+  &__submit-icon {
+    @include bookings-actions($color-green, 1rem);
+  }
+  &__edit-icon {
+    @include bookings-actions($color-blue, 0);
+  }
   &__table {
     width: 80%;
     table-layout: fixed;
@@ -45,11 +49,17 @@
       font-size: 1.2rem;
     }
   }
-  th:nth-child(1),
+  th:nth-child(1) {
+    width: 5%;
+  }
+  th:nth-child(3),
+  th:nth-child(4) {
+    width: 25%;
+  }
   th:nth-child(5) {
-    width: 10%;
+    width: 15%;
   }
   th:nth-child(2) {
-    width: 45%;
+    width: 50%;
   }
 }

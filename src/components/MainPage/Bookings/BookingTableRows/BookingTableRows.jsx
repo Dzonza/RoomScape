@@ -1,22 +1,107 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { useCallback, useRef, useState } from 'react';
+import EditInput from '../../../ReusableComponents/EditInput/EditInput';
+import { useDispatch } from 'react-redux';
+import { load } from '../../../../States/loadingBookingsSlice';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 const BookingTable = ({ userBookings, handleDeleteBtn }) => {
+  const [selectedAparmtent, setSelectedApartment] = useState('');
+  const [errorCheckIn, setErrorCheckIn] = useState(false);
+  const [errorCheckOut, setErrorCheckOut] = useState(false);
+  const editCheckIn = useRef();
+  const editCheckOut = useRef();
+  const dispatch = useDispatch();
+
+  const handleEditBtn = useCallback((id) => {
+    setErrorCheckIn(false);
+    setErrorCheckOut(false);
+    setSelectedApartment(id);
+  }, []);
+  const handleCancelEditBtn = useCallback(() => {
+    setErrorCheckIn(false);
+    setErrorCheckOut(false);
+    setSelectedApartment('');
+  }, []);
+  const handleSubmitBtn = useCallback(() => {
+    if (!(editCheckIn.current.value || editCheckOut.current.value)) {
+      setErrorCheckIn(true);
+      setErrorCheckOut(true);
+      return;
+    }
+    if (editCheckIn.current.valueAsDate >= editCheckOut.current.valueAsDate) {
+      setErrorCheckIn(true);
+      setErrorCheckOut(true);
+      return;
+    }
+    async function updateBooking() {
+      try {
+        await fetch(`http://localhost:3000/bookings/${selectedAparmtent}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            checkIn: editCheckIn.current.value,
+            checkOut: editCheckOut.current.value,
+          }),
+        });
+        dispatch(load());
+        setSelectedApartment('');
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    setErrorCheckIn(false);
+    setErrorCheckOut(false);
+    updateBooking();
+  }, [editCheckIn, editCheckOut, selectedAparmtent]);
+
   return userBookings.map((booking, index) => {
     return (
       <tr key={index}>
         <td>{index + 1}</td>
         <td>{booking.apartmentName}</td>
-        <td>{booking.checkIn}</td>
-        <td>{booking.checkOut}</td>
         <td>
-          <svg
-            onClick={() => handleDeleteBtn(booking.id)}
-            xmlns="http://www.w3.org/2000/svg"
-            x="0px"
-            y="0px"
-            viewBox="0 0 24 24"
+          {selectedAparmtent === booking.id ? (
+            <EditInput error={errorCheckIn} ref={editCheckIn} />
+          ) : (
+            `${booking.checkIn}`
+          )}
+        </td>
+        <td>
+          {selectedAparmtent === booking.id ? (
+            <EditInput error={errorCheckOut} ref={editCheckOut} />
+          ) : (
+            `${booking.checkOut}`
+          )}
+        </td>
+        <td className="bookings-container__actions">
+          {!(selectedAparmtent === booking.id) ? (
+            <FontAwesomeIcon
+              icon={faPenToSquare}
+              className="bookings-container__edit-icon"
+              onClick={() => handleEditBtn(booking.id)}
+            />
+          ) : (
+            <>
+              <FontAwesomeIcon
+                icon={faXmark}
+                onClick={handleCancelEditBtn}
+                className="bookings-container__cancel-icon"
+              />
+              <FontAwesomeIcon
+                icon={faCheck}
+                onClick={handleSubmitBtn}
+                className="bookings-container__submit-icon"
+              />
+            </>
+          )}
+          <FontAwesomeIcon
+            icon={faTrash}
             className="bookings-container__delete-icon"
-          >
-            <path d="M 10 2 L 9 3 L 5 3 C 4.4 3 4 3.4 4 4 C 4 4.6 4.4 5 5 5 L 7 5 L 17 5 L 19 5 C 19.6 5 20 4.6 20 4 C 20 3.4 19.6 3 19 3 L 15 3 L 14 2 L 10 2 z M 5 7 L 5 20 C 5 21.1 5.9 22 7 22 L 17 22 C 18.1 22 19 21.1 19 20 L 19 7 L 5 7 z M 9 9 C 9.6 9 10 9.4 10 10 L 10 19 C 10 19.6 9.6 20 9 20 C 8.4 20 8 19.6 8 19 L 8 10 C 8 9.4 8.4 9 9 9 z M 15 9 C 15.6 9 16 9.4 16 10 L 16 19 C 16 19.6 15.6 20 15 20 C 14.4 20 14 19.6 14 19 L 14 10 C 14 9.4 14.4 9 15 9 z"></path>
-          </svg>
+            onClick={() => handleDeleteBtn(booking.id)}
+          />
         </td>
       </tr>
     );

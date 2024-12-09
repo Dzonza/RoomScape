@@ -72,8 +72,14 @@ const BookingBtn = ({ checkIn, checkOut, apartmentInfo }) => {
             userId: sessionStorage.getItem('currentUserId'),
             apartmentName: apartmentInfo.title,
             apartmentId: apartmentInfo.clientLoggingData.productId,
-            checkIn: `${checkIn.day}/${checkIn.month}/${checkIn.year}`,
-            checkOut: `${checkOut.day}/${checkOut.month}/${checkOut.year}`,
+            checkIn: `${checkIn.year}-${checkIn.month.padStart(
+              2,
+              '0'
+            )}-${checkIn.day.padStart(2, '0')}`,
+            checkOut: `${checkOut.year}-${checkOut.month.padStart(
+              2,
+              '0'
+            )}-${checkOut.day.padStart(2, '0')}`,
           }),
         });
         dispatch(load());

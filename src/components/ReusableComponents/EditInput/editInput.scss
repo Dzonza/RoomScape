@@ -1,0 +1,13 @@
+@use '/src/abstracts/abstracts' as *;
+.booking-edit-inputs {
+  border: none;
+  padding: 0.3rem;
+  background-color: $bg-color-white;
+  cursor: pointer;
+  color: $color-black-dark;
+}
+
+.error-edit-input {
+  border: 2px solid $color-error-red;
+  border-radius: $border-radius-small;
+}
